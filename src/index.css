@@ -1,0 +1,200 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Theme tokens */
+  --bg: #0f1720;
+  --card-bg: #111827;
+  --muted: #9aa4b2;
+  --text: rgba(255,255,255,0.92);
+  --accent: #7c4dff; /* purple */
+  --accent-2: #46c6ff; /* cyan */
+  --surface: #0b1220;
+
+  color-scheme: light dark;
+  color: var(--text);
+  background-color: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: rgba(124,77,255,0.18);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f8fb;
+    --card-bg: #ffffff;
+    --muted: #6b7280;
+    --text: #0f1724;
+    --accent: #5b4bff;
+    --accent-2: #0ea5ff;
+    --surface: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: transparent;
+  }
+}
+
+/* App layout */
+.app-container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 20px;
+  color: var(--text);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.search-card, .add-card {
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: var(--text);
+  transition: box-shadow 180ms, border-color 180ms, transform 120ms;
+}
+.input:focus {
+  outline: none;
+  box-shadow: 0 6px 24px rgba(76,33,255,0.12);
+  border-color: rgba(124,77,255,0.28);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  border: none;
+  box-shadow: 0 8px 20px rgba(76,33,255,0.18);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+}
+.result-table th, .result-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.result-table th {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.result-table tr:hover {
+  background: rgba(124,77,255,0.04);
+}
+
+.muted { color: var(--muted); }
+
+/* small responsive tweaks */
+@media (max-width: 720px) {
+  .header { flex-direction: column; align-items: stretch; }
+}
+/* BƯỚC 8. GIAO DIỆN (CSS) VÀ MODAL FORM */
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: var(--modal-bg, #fff);
+  color: var(--modal-color, inherit);
+  padding: 16px;
+  border-radius: 8px;
+  width: 360px;
+  max-width: calc(100% - 24px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-content {
+    --modal-bg: #1a1a1a;
+    --modal-color: #fff;
+  }
+}
